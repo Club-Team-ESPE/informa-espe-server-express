@@ -14,8 +14,34 @@ datasource db {
 }
 
 
-model Document {
-    id    Int @id @default(autoincrement())
-    name  String
-    url String
+model Anuncio {
+  id               Int      @id @default(autoincrement())
+  remitente        String
+  titulo           String
+  descripcion      String
+  fechaPublicacion DateTime @default(now())
+  horaEnvio        DateTime
+  tag              Tag
+}
+
+enum Tag {
+  ITIN
+  BIO
+  AGRO
+  General
+}
+
+model Noticia {
+  id               Int      @id @default(autoincrement())
+  titulo           String
+  descripcion      String
+  fechaPublicacion DateTime @default(now())
+  imagenes         Imagen[] // Definimos la relación con un array de Imagenes
+}
+
+model Imagen {
+  id        Int     @id @default(autoincrement())
+  url       String
+  noticia   Noticia @relation(fields: [noticiaId], references: [id])
+  noticiaId Int
 }
