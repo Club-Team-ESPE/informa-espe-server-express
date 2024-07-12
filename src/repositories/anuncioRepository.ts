@@ -1,33 +1,28 @@
-import { PrismaClient } from '@prisma/client';
-import { Anuncio } from '../models/anuncio/anuncio';
-
-const prisma = new PrismaClient();
+import { prisma } from '../prisma/client'
+import { Anuncio } from '@prisma/client'
+import { AnuncioDTO } from '../models/anuncio/anuncio'
 
 export const AnuncioRepository = {
-  async findById(id: number): Promise<Anuncio | null> {
+  async findById (id: number): Promise<Anuncio | null> {
     return await prisma.anuncio.findUnique({
-      where: { id },
-    });
+      where: { id }
+    })
   },
-
-  async getAll(): Promise<Anuncio[]> {
-    return await prisma.anuncio.findMany();
+  async getAll (): Promise<Anuncio[] | null> {
+    return await prisma.anuncio.findMany()
   },
-
-  async create(data: Partial<Anuncio>): Promise<Anuncio> {
-    return await prisma.anuncio.create({ data });
+  async create (anuncioData: AnuncioDTO): Promise<Anuncio> { // Tambien Omit<Anuncio, 'id'>
+    return await prisma.anuncio.create({ data: anuncioData })
   },
-
-  async update(id: number, data: Partial<Anuncio>): Promise<Anuncio> {
+  async update (id: number, data: Partial<Anuncio>): Promise<Anuncio> {
     return await prisma.anuncio.update({
       where: { id },
-      data,
-    });
+      data
+    })
   },
-
-  async delete(id: number): Promise<Anuncio> {
+  async delete (id: number): Promise<Anuncio> {
     return await prisma.anuncio.delete({
-      where: { id },
-    });
-  },
-};
+      where: { id }
+    })
+  }
+}

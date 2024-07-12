@@ -13,14 +13,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Document {
+    id    Int @id @default(autoincrement())
+    name  String
+    url String
+}
 
 model Anuncio {
   id               Int      @id @default(autoincrement())
   remitente        String
   titulo           String
   descripcion      String
-  fechaPublicacion DateTime @default(now())
-  horaEnvio        DateTime
+  fechaIngreso     String
+  fechaEnvio       String
   tag              Tag
 }
 

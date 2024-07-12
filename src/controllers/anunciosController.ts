@@ -1,59 +1,51 @@
-import { Request, Response } from 'express';
-import { Anuncio } from '../models/anuncio/anuncio';
-import { AnuncioService } from '../services/anuncioService';
+import { NextFunction, Request, Response } from 'express'
+import { AnuncioDTO, AnuncioUpdateDTO } from '../models/anuncio/anuncio'
+import { AnuncioService } from '../services/anuncioService'
+import moment from 'moment-timezone'
 
 export const AnuncioController = {
-  async createAnuncio(req: Request, res: Response): Promise<void> {
-    const { remitente, titulo, descripcion, horaEnvio, tag } = req.body as Anuncio;
-    try {
-      const newAnuncio = await AnuncioService.createAnuncio({ remitente, titulo, descripcion, horaEnvio, tag });
-      res.json(newAnuncio);
-    } catch (error) {
-      res.status(500).json({ error: 'Error creating anuncio' });
-    }
+  createAnuncio (req: Request, res: Response, next: NextFunction): void {
+    const { remitente, titulo, descripcion, fechaEnvio, tag } = req.body as AnuncioDTO
+    const date = new Date()
+    const fechaIngreso = moment(date).tz('America/Guayaquil').format()
+    AnuncioService.createAnuncio({ remitente, titulo, descripcion, fechaIngreso, fechaEnvio, tag })
+      .then(anuncio => res.json(anuncio))
+      .catch(error => {
+        next(error)
+      })
   },
 
-  async getAllAnuncios(req: Request, res: Response): Promise<void> {
-    try {
-      const allAnuncios = await AnuncioService.getAllAnuncios();
-      res.json(allAnuncios);
-    } catch (error) {
-      res.status(500).json({ error: 'Error retrieving anuncios' });
-    }
+  getAllAnuncios (_req: Request, res: Response, next: NextFunction): void {
+    AnuncioService.getAllAnuncios()
+      .then(allAnuncios => res.json(allAnuncios))
+      .catch(error => next(error))
   },
 
-  async getAnuncioById(req: Request, res: Response): Promise<void> {
-    const { id } = req.params;
-    try {
-      const anuncio = await AnuncioService.getAnuncioById(parseInt(id));
-      if (!anuncio) {
-        res.status(404).json({ error: 'Anuncio not found' });
-      } else {
-        res.json(anuncio);
-      }
-    } catch (error) {
-      res.status(500).json({ error: 'Error retrieving anuncio' });
-    }
+  getAnuncioById (req: Request, res: Response, next: NextFunction): void {
+    const { id } = req.params
+    AnuncioService.getAnuncioById(parseInt(id))
+      .then(anuncio => {
+        if (anuncio == null) {
+          res.status(404).json({ error: 'Anuncio not found' })
+        } else {
+          res.json(anuncio)
+        }
+      })
+      .catch(error => next(error))
   },
 
-  async updateAnuncio(req: Request, res: Response): Promise<void> {
-    const { id } = req.params;
-    const { remitente, titulo, descripcion, fechaPublicacion, horaEnvio, tag } = req.body as Anuncio;
-    try {
-      const updatedAnuncio = await AnuncioService.updateAnuncio(parseInt(id), { remitente, titulo, descripcion, fechaPublicacion, horaEnvio, tag });
-      res.json(updatedAnuncio);
-    } catch (error) {
-      res.status(500).json({ error: 'Error updating anuncio' });
-    }
+  updateAnuncio (req: Request, res: Response, next: NextFunction): void {
+    const { id } = req.params
+    const { remitente, titulo, descripcion, fechaEnvio, tag } = req.body as AnuncioUpdateDTO
+    AnuncioService.updateAnuncio(parseInt(id), { remitente, titulo, descripcion, fechaEnvio, tag })
+      .then(updatedAnuncio => res.json(updatedAnuncio))
+      .catch(error => next(error))
   },
 
-  async deleteAnuncio(req: Request, res: Response): Promise<void> {
-    const { id } = req.params;
-    try {
-      await AnuncioService.deleteAnuncio(parseInt(id));
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ error: 'Error deleting anuncio' });
-    }
-  },
-};
+  deleteAnuncio (req: Request, res: Response, next: NextFunction): void {
+    const { id } = req.params
+    AnuncioService.deleteAnuncio(parseInt(id))
+      .then(anuncio => res.status(204).send(anuncio))
+      .catch(error => next(error))
+  }
+}
