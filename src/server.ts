@@ -1,6 +1,7 @@
 import { app } from './app'
 import { ENV } from './config/environment'
-
+// import https from 'https'
+// import fs from 'fs'
 import { prisma } from './prisma/client'
 
 const startServer = async (): Promise<void> => {
@@ -8,6 +9,17 @@ const startServer = async (): Promise<void> => {
     // Conectar a la base de datos
     await prisma.$connect()
     console.log('Connected to the database')
+    /*
+    // Opciones de HTTPS
+    const httpsOptions = {
+      key: fs.readFileSync('../server.key'),
+      cert: fs.readFileSync('../server.crt')
+    }
+        // Iniciar el servidor HTTPS
+        https.createServer(httpsOptions, app).listen(ENV.PORT, () => {
+          console.log(`HTTPS Server is running on port ${ENV.PORT}`)
+        })
+    */
 
     // Iniciar el servidor
     app.listen(ENV.PORT, () => {
