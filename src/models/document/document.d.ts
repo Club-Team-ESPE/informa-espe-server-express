@@ -4,4 +4,5 @@ export interface Document {
   url: string
 }
 
-export type NewDocument = Omit<Document, 'id'>
+export type NewDocument1 = Omit<Document, 'id', 'url'>
+export type NewDocument2 = Omit<Document, 'id'>

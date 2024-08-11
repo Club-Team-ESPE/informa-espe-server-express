@@ -1,4 +1,5 @@
 import express from 'express' // ESModules
+import path from 'path'
 // Middlewares
 import cors from 'cors'
 import corsOptions from './config/corsOptions'
@@ -13,6 +14,11 @@ const app = express()
 // Middlewares
 app.use(express.json())
 app.use(cors(corsOptions))
+
+// Rutas para documentos e imagenes
+app.use('/docs/anuncios', express.static(path.join(__dirname, '../docs/uploads/anuncios')))
+app.use('/docs/noticias', express.static(path.join(__dirname, '../docs/uploads/noticias')))
+app.use('/docs/documento', express.static(path.join(__dirname, '../docs/uploads/documents')))
 
 // Routes
 app.use('/api/mobil', mobileApiRoutes)

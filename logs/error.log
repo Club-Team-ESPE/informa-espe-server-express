@@ -1,0 +1,27 @@
+2024-08-11 15:02:54 [ERROR]: Error al crear documento: Cannot read properties of undefined (reading 'filename')
+    at Object.createDocument (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\src\services\documentService.ts:14:15)
+    at createDocument (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\src\controllers\documentsController.ts:8:21)
+    at Layer.handle [as handle_request] (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\src\middlewares\validations.ts:9:10
+    at Layer.handle [as handle_request] (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at done (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\node_modules\multer\lib\make-middleware.js:45:7)
+    at indicateDone (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\node_modules\multer\lib\make-middleware.js:49:68)
+    at C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\node_modules\multer\lib\make-middleware.js:155:11
+2024-08-11 15:03:53 [ERROR]: Error al crear documento: 
+Invalid `prisma.document.create()` invocation in
+C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\src\repositories\documentRepository.ts:7:34
+
+  4 
+  5 export const documentRepository = {
+  6   async create (document: NewDocument2): Promise<Document> {
+→ 7     return await prisma.document.create({
+          data: {
+            name: "Nombre",
+        +   url: String
+          }
+        })
+
+Argument `url` is missing.
+    at Object.createDocument (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\src\services\documentService.ts:14:15)

@@ -7,7 +7,7 @@ necesarias para la ejecucion o si son dependencias de desarrollo.
 
 ## Comandos PRISMA
 * npx prisma init: Inicializar Prisma (ya se ha inicializado).
-* npx prisma migrate dev --name init: Migracion a base de datos configurada.
+* npx prisma migrate dev --name init: Migracion a base de datos configurada. (Usa este)
 * npx prisma generate: Generar modelo de datos.
 * npx prisma studio: Consultar datos.
 * npx prisma db: Consultar datos en consola.
