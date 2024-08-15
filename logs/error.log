@@ -25,3 +25,91 @@ C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-expres
 
 Argument `url` is missing.
     at Object.createDocument (C:\Users\hp\Desktop\DEV\ESPE\Club Team ESPE\Proyectos\informa-espe-server-express\src\services\documentService.ts:14:15)
+2024-08-14 21:39:15 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
+2024-08-14 21:39:17 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
+2024-08-14 21:39:23 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
+2024-08-14 21:39:23 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
+2024-08-14 21:39:24 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
+2024-08-14 21:39:25 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
+2024-08-14 21:39:27 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
+2024-08-14 21:39:28 [ERROR]: TypeError: noticiaService_1.NoticiaService.getAllNoticias is not a function
+    at getAllNoticias (C:\xampp\htdocs\a\informa-espe-server-express\src\controllers\noticiaController.ts:26:45)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\xampp\htdocs\a\informa-espe-server-express\node_modules\express\lib\router\index.js:47:12)
