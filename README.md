@@ -1,7 +1,7 @@
 ## Comandos para preparar ambiente
 * npm install
 
-Las dependencuas ya estan configuradas, al agregar nuevas verificar si son dependencias
+Las dependencias ya estan configuradas, al agregar nuevas verificar si son dependencias
 necesarias para la ejecucion o si son dependencias de desarrollo.
 
 
