@@ -20,6 +20,33 @@ export const    NoticiaController = {
       next(error);
     }
   },
+  async  updateNoticia(req: RequestWithFiles, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params; 
+      const { titulo, descripcion, fechaPublicacion } = req.body;
+      let imagenes: { url: string }[] = [];
+  
+      if (req.files && typeof req.files === 'object' && 'imagenes' in req.files) {
+        imagenes = req.files.imagenes.map((file: Express.Multer.File) => ({ url: file.filename }));
+      }
+  
+      const updatedNoticia = await NoticiaService.updateNoticia(Number(id), { 
+        titulo, 
+        descripcion, 
+        fechaPublicacion,
+        imagenes
+      });
+  
+      if (!updatedNoticia) {
+        return res.status(404).json({ message: 'Noticia not found' });
+      }
+  
+      return res.status(200).json(updatedNoticia);
+    } catch (error) {
+      console.error('Error in updateNoticia controller:', error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  },
 
   async getAllNoticias(_req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
@@ -33,35 +60,33 @@ export const    NoticiaController = {
 
   async getNoticiaById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { id } = req.params; // Obtiene el ID de los parámetros
-      const noticia = await NoticiaService.getNoticiaById(Number(id)); // Llama al servicio para obtener la noticia
+      const { id } = req.params; 
+      const noticia = await NoticiaService.getNoticiaById(Number(id));
 
       res.status(200).json(noticia);
     } catch (error) {
       next(error);
     }
   },
-  
-  async deleteNoticia(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async deleteNoticia(req: Request, res: Response): Promise<Response> {
     try {
-      const id = parseInt(req.params.id);
-  
+      const id = parseInt(req.params.id, 10);
+
       if (isNaN(id)) {
-        res.status(400).json({ message: 'ID de noticia inválido' });
-        return;
+        return res.status(400).json({ message: 'Id no valido' });
       }
-  
-      const deleted = await NoticiaService.deleteNoticia(id);
-  
-      // Verificamos si se eliminó la noticia
-      if (!deleted) {
-        res.status(404).json({ message: 'Noticia no encontrada' });
-        return;
+
+      const result = await NoticiaService.deleteNoticia(id);
+
+      if (!result) {
+        return res.status(404).json({ message: 'Noticia not found or could not be deleted' });
       }
-  
-      res.status(204).send(); // Responde con 204 No Content
+
+      return res.status(200).json({ message: 'Noticia se elimino correctamente' });
     } catch (error) {
-      next(error);
+      console.error('Error in deleteNoticia controller:', error);
+      return res.status(500).json({ message: 'Internal server error' });
     }
-  }
+  },
+
 };

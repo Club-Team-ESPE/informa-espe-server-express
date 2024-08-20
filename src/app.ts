@@ -8,7 +8,6 @@ import { errorHandler } from './middlewares/errorHandler'
 import moment from 'moment-timezone'
 // Routes
 import mobileApiRoutes from './routes/mobil/index'
-import noticiaRoutes from './routes/mobil/noticiaRoutes'
 
 const app = express()
 
@@ -23,7 +22,6 @@ app.use('/docs/documento', express.static(path.join(__dirname, '../docs/uploads/
 
 // Routes
 app.use('/api/mobil', mobileApiRoutes)
-app.use('/api/noticias', noticiaRoutes); // Añade las rutas de noticias
 
 app.all('*', (_req, res) => {
   res.status(404)

@@ -13,13 +13,19 @@ router.post(
   getMulterUpload('../../docs/uploads/noticias').fields([{ name: 'imagenes', maxCount: 10 }]),
   validationMiddleware(noticiaSchema),
   NoticiaController.createNoticia
-);
-router.delete('/:id', NoticiaController.deleteNoticia);
+)
+router.put(
+  '/:id',
+  getMulterUpload('../../docs/uploads/noticias').fields([{ name: 'imagenes', maxCount: 10 }]),
+  validationMiddleware(noticiaSchema),
+  NoticiaController.updateNoticia
+)
+router.delete('/:id', NoticiaController.deleteNoticia)
 
 // GET /noticias - Obtener todas las noticias
-router.get('/', NoticiaController.getAllNoticias);
+router.get('/', NoticiaController.getAllNoticias)
 
 // GET /noticias/:id - Obtener una noticia por ID
-router.get('/:id', NoticiaController.getNoticiaById);
+router.get('/:id', NoticiaController.getNoticiaById)
 
 export default router;

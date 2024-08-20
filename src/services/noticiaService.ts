@@ -16,20 +16,27 @@ export const NoticiaService = {
     }
   },
 
+  
+   async  updateNoticia(id: number, data: {
+    titulo?: string;
+    descripcion?: string;
+    fechaPublicacion?: Date;
+    imagenes?: { url: string }[];
+  }): Promise<Noticia | null> {
+    return NoticiaRepository.updateNoticia(id, data);
+  },
+
   async deleteNoticia(id: number): Promise<boolean> {
     try {
-      const deletedNoticia = await NoticiaRepository.delete(id);
-
-      // Si se elimina una noticia, retornamos true
-      return deletedNoticia !== null; // Retorna true si se eliminó
+      await NoticiaRepository.delete(id);
+      return true
     } catch (error) {
-      // Manejo de errores (opcional)
-      console.error(error);
-      throw new Error('Error al eliminar la noticia');
+      console.error('Error al eliminar noticia:', error);
+      return false
     }
   },
   async getAll(): Promise<Noticia[]> {
-    return await NoticiaRepository.getAll();
+    return await NoticiaRepository.getAll()
   },
 
   async getNoticiaById(id: number): Promise<Noticia | null> {
@@ -37,6 +44,6 @@ export const NoticiaService = {
     if (!noticia) {
       throw new CustomNameError('Noticia no encontrada', 'Error al obtener noticia');
     }
-    return noticia;
+    return noticia
   },
 };
