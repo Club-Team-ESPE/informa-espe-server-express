@@ -1,18 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
 import { AnuncioDTO, AnuncioUpdateDTO } from '../models/anuncio/anuncio'
 import { AnuncioService } from '../services/anuncioService'
-import moment from 'moment-timezone'
 
 export const AnuncioController = {
   createAnuncio (req: Request, res: Response, next: NextFunction): void {
-    const { remitente, titulo, descripcion, fechaEnvio, tag } = req.body as AnuncioDTO
-    const date = new Date()
-    const fechaIngreso = moment(date).tz('America/Guayaquil').format()
-    AnuncioService.createAnuncio({ remitente, titulo, descripcion, fechaIngreso, fechaEnvio, tag })
-      .then(anuncio => res.json(anuncio))
-      .catch(error => {
-        next(error)
-      })
+    const anuncio = req.body as AnuncioDTO
+    AnuncioService.createAnuncio(anuncio)
+      .then(newAnuncio => res.json(newAnuncio))
+      .catch(error => next(error))
   },
 
   getAllAnuncios (_req: Request, res: Response, next: NextFunction): void {
@@ -26,7 +21,7 @@ export const AnuncioController = {
     AnuncioService.getAnuncioById(parseInt(id))
       .then(anuncio => {
         if (anuncio == null) {
-          res.status(404).json({ error: 'Anuncio not found' })
+          res.status(400).json({ error: 'Anuncio not found' })
         } else {
           res.json(anuncio)
         }

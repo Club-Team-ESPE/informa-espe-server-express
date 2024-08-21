@@ -2,6 +2,8 @@ import { AnuncioRepository } from '../repositories/anuncioRepository'
 import { Anuncio } from '@prisma/client'
 import { AnuncioDTO } from '../models/anuncio/anuncio'
 
+import moment from 'moment-timezone'
+
 export const AnuncioService = {
   async getAllAnuncios (): Promise<Anuncio[] | null> {
     return await AnuncioRepository.getAll()
@@ -12,7 +14,16 @@ export const AnuncioService = {
   },
 
   async createAnuncio (data: AnuncioDTO): Promise<Anuncio> {
-    return await AnuncioRepository.create(data)
+    try {
+      let { remitente, titulo, descripcion, fechaEnvio, tag } = data
+      const date = new Date()
+      const date2 = new Date(fechaEnvio)
+      const fechaIngreso = moment(date).tz('America/Guayaquil').format()
+      fechaEnvio = moment(date2).tz('America/Guayaquil').format()
+      return await AnuncioRepository.create({ remitente, titulo, descripcion, fechaIngreso, fechaEnvio, tag })
+    } catch (error) {
+      throw new Error('Error al crear el anuncio')
+    }
   },
 
   async updateAnuncio (id: number, data: Partial<Anuncio>): Promise<Anuncio> {

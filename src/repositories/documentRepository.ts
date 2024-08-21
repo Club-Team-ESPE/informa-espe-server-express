@@ -1,12 +1,19 @@
 import { prisma } from '../prisma/client'
+import { Document } from '@prisma/client'
+import { NewDocument2 } from '../models/document/document'
 
 export const documentRepository = {
-  async findById (id: number) {
-    return prisma.document.findUnique({
+  async create (document: NewDocument2): Promise<Document> {
+    return await prisma.document.create({ data: document })
+  },
+
+  async findById (id: number): Promise<Document | null> {
+    return await prisma.document.findUnique({
       where: { id }
     })
   },
-  async getAll () {
-    return prisma.document.findMany()
+
+  async getAll (): Promise<Document[]> {
+    return await prisma.document.findMany()
   }
 }
