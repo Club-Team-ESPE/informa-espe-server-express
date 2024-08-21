@@ -15,6 +15,13 @@ router.post(
   NoticiaController.createNoticia
 )
 
+router.put(
+  '/:id',
+  getMulterUpload('../../docs/uploads/noticias').fields([{ name: 'imagenes', maxCount: 10 }]),
+  validationMiddleware(noticiaSchema),
+  NoticiaController.updateNoticia
+)
+
 router.delete('/:id', NoticiaController.deleteNoticia)
 
 // GET /noticias - Obtener todas las noticias
