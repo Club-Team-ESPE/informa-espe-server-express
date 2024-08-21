@@ -1,5 +1,5 @@
 import { Imagen } from '../imagen/imagen'
-import { Request } from 'express';
+import { Request } from 'express'
 
 export interface Noticia {
   id: number
@@ -13,12 +13,9 @@ export interface createNoticiaDTO {
   titulo: string
   descripcion: string
   fechaPublicacion?: Date
-  imagenes: { url: string }[]
+  imagenes: Array<{ url: string }>
 }
-
 
 export interface RequestWithFiles extends Request {
-  files?: { [fieldname: string]: Express.Multer.File[] } | Express.Multer.File[]; // Definición para `files`
+  files?: { [fieldname: string]: Express.Multer.File[] } | Express.Multer.File[] // Definición para `files`
 }
-
-

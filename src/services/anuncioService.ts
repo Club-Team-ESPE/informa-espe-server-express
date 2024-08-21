@@ -15,9 +15,11 @@ export const AnuncioService = {
 
   async createAnuncio (data: AnuncioDTO): Promise<Anuncio> {
     try {
-      const { remitente, titulo, descripcion, fechaEnvio, tag } = data
+      let { remitente, titulo, descripcion, fechaEnvio, tag } = data
       const date = new Date()
+      const date2 = new Date(fechaEnvio)
       const fechaIngreso = moment(date).tz('America/Guayaquil').format()
+      fechaEnvio = moment(date2).tz('America/Guayaquil').format()
       return await AnuncioRepository.create({ remitente, titulo, descripcion, fechaIngreso, fechaEnvio, tag })
     } catch (error) {
       throw new Error('Error al crear el anuncio')
