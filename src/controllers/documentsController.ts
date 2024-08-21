@@ -12,9 +12,6 @@ export const documentController = {
 
   getAllDocuments (_req: Request, res: Response): void {
     documentService.getAllDocuments().then(documents => {
-      if (documents.length === 0) {
-        return res.status(400).send({ message: 'No se encontraron documentos' })
-      }
       return res.status(200).send(documents)
     }).catch(error => {
       throw error
