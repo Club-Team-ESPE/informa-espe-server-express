@@ -14,19 +14,19 @@ export const NoticiaRepository = {
       }
     })
   },
-  async  updateNoticia(id: number, data: {
-    titulo?: string;
-    descripcion?: string;
-    fechaPublicacion?: Date;
-    imagenes?: { url: string }[];
+  async  updateNoticia (id: number, data: {
+    titulo?: string
+    descripcion?: string
+    fechaPublicacion?: Date
+    imagenes?: Array<{ url: string }>
   }): Promise<Noticia> {
     try {
       return await prisma.$transaction(async (prisma) => {
         // Primero, eliminamos las imágenes antiguas
         await prisma.imagen.deleteMany({
-          where: { noticiaId: id },
-        });
-  
+          where: { noticiaId: id }
+        })
+
         // Luego, actualizamos la noticia con las nuevas imágenes
         return await prisma.noticia.update({
           where: { id },
@@ -35,34 +35,35 @@ export const NoticiaRepository = {
             descripcion: data.descripcion,
             fechaPublicacion: data.fechaPublicacion,
             imagenes: {
-              create: data.imagenes,
-            },
+              create: data.imagenes
+            }
           },
           include: {
-            imagenes: true,
-          },
+            imagenes: true
+          }
         })
       })
     } catch (error) {
-      console.error('Error updating noticia:', error);
-      throw error; // Lanza el error para que el controlador pueda manejarlo
+      console.error('Error updating noticia:', error)
+      throw error // Lanza el error para que el controlador pueda manejarlo
     }
   },
-  async delete(id: number): Promise<void> {
+  async delete (id: number): Promise<void> {
     try {
       // Usamos una transacción para eliminar imágenes y la noticia
       await prisma.$transaction(async (prisma) => {
         await prisma.imagen.deleteMany({
           where: { noticiaId: id }
-        });
+        })
         await prisma.noticia.delete({
           where: { id }
-        });
-      });
+        })
+      })
     } catch (error) {
-      console.error('Error deleting noticia:', error);
-      throw new Error('Error deleting noticia');
+      console.error('Error deleting noticia:', error)
+      throw new Error('Error deleting noticia')
     }
+  },
   async getAll (): Promise<Noticia[]> {
     return await prisma.noticia.findMany({
       include: {
@@ -74,8 +75,8 @@ export const NoticiaRepository = {
     return await prisma.noticia.findUnique({
       where: { id },
       include: {
-        imagenes: true,
-      },
-    });
-  },
-};
+        imagenes: true
+      }
+    })
+  }
+}

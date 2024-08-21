@@ -18,7 +18,6 @@ export const NoticiaService = {
   async deleteNoticia (id: number): Promise<boolean> {
     try {
       const deletedNoticia = await NoticiaRepository.delete(id)
-
       // Si se elimina una noticia, retornamos true
       return deletedNoticia !== null // Retorna true si se eliminó
     } catch (error) {
@@ -26,26 +25,17 @@ export const NoticiaService = {
       console.error(error)
       throw new Error('Error al eliminar la noticia')
     }
-  }, 
-  async updateNoticia(id: number, data: {
-    titulo?: string;
-    descripcion?: string;
-    fechaPublicacion?: Date;
-    imagenes?: { url: string }[];
+  },
+  async updateNoticia (id: number, data: {
+    titulo?: string
+    descripcion?: string
+    fechaPublicacion?: Date
+    imagenes?: Array<{ url: string }>
   }): Promise<Noticia | null> {
-    return NoticiaRepository.updateNoticia(id, data);
+    return await NoticiaRepository.updateNoticia(id, data)
   },
   async getAll (): Promise<Noticia[]> {
-        return await NoticiaRepository.getAll()
-  },
-  async deleteNoticia(id: number): Promise<boolean> {
-    try {
-      await NoticiaRepository.delete(id);
-      return true
-    } catch (error) {
-      console.error('Error al eliminar noticia:', error);
-      return false
-    }
+    return await NoticiaRepository.getAll()
   },
   async getNoticiaById (id: number): Promise<Noticia | null> {
     const noticia = await NoticiaRepository.findById(id)
@@ -54,4 +44,4 @@ export const NoticiaService = {
     }
     return noticia
   }
-};
+}
