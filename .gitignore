@@ -4,3 +4,8 @@ node_modules
 /build
 
 /prisma/migrations
+
+
+/docs/uploads/anuncios/
+/docs/uploads/documents/
+/docs/uploads/noticias/
